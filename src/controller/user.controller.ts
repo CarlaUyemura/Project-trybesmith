@@ -10,4 +10,10 @@ export default class UserController {
 
     res.status(201).json({ token });
   }
+
+  async login(req: Request, res: Response): Promise<void> {
+    const { body } = req;
+    const token = await this.userService.validateLogin(body);
+    res.status(200).json({ token });
+  }
 }
